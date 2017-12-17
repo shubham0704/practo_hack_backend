@@ -36,7 +36,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 	except:
 		return
 	dates = []
-	print lines
+	#print lines
 	for line in lines:
 		try:
 			dt = re.search("EXP.[\s]{0,1}([A-Z]{3,4}[\s]{0,1}.[0-9]{2,4})", line).group(1)
@@ -171,7 +171,7 @@ def get_name(fname):
 		return k 
 	return k
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
 
  #print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
- print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+ #print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
