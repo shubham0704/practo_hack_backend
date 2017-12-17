@@ -1,10 +1,8 @@
 opencv_python==3.2.0.7
 imutils==0.4.3
 matplotlib==2.0.2
-motor==1.1
 numpy==1.13.1
 requests==2.18.4
 tornado==4.4.2
 Pillow==4.3.0
 python_dateutil==2.6.1
-Tornado==4.4

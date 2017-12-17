@@ -14,7 +14,6 @@ from tornado.web import RequestHandler, Application, removeslash
 import json
 import uuid
 import requests
-from motor import MotorClient
 from os.path import join, dirname, isfile, splitext
 from imutils import face_utils
 import numpy as np
