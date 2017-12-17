@@ -31,18 +31,17 @@ def sanitize_data(fname, prepro=False, vertical=False):
 	data = unicodedata.normalize('NFKD', data).encode('ascii','ignore')
 	lines = data.split('\n')
 	dates = []
-	#print data, '\n\n\n'
+	
 	for line in lines:
 		items = line.split()
 		if len(items) > 1:
 			for item in items:
-				#print  items, item
 				try:
 					if re.match('([0-9].+)/([0-9].+)', item) or re.match('([a-zA-Z].+).[0-9].+', item):
 						now = parse(item)
 						dates.append(now)
 				except Exception as e:
-					#print e
+					
 					continue
 		else:
 			try:
@@ -54,7 +53,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 	
 	for line in lines:
 		items = line.split()
-		#print items
+		
 		for i, item in enumerate(items):
 			if "EX" in item:
 				date = "".join((x for x in items[i+1:]))
