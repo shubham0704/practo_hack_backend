@@ -28,7 +28,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 	else:
 		data = cloudvisreq.get_lines(image_filenames=[fname])
 	
-	data = unicodedata.normalize('NFKD', data).encode('ascii','ignore')
+	#data = unicodedata.normalize('NFKD', data).encode('ascii','ignore')
 	lines = data.split('\n')
 	dates = []
 	
@@ -76,7 +76,7 @@ def get_name(fname):
 
 	#img = Image.open(abspath(fname))
 	data = cloudvisreq.get_lines(image_filenames=[fname])
-	data = unicodedata.normalize('NFKD', data).encode('ascii','ignore')
+	#data = unicodedata.normalize('NFKD', data).encode('ascii','ignore')
 	lines = data.split('\n')
 	#print get_lines
 	freq = {}
