@@ -1,13 +1,5 @@
-from base64 import b64encode
-from os import makedirs
-from os.path import join, basename
-from sys import argv
-import json
-import requests
-import env
-
-ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
-RESULTS_DIR = 'jsons'
+from controllers.modules import *
+#from modules import *
 try:
     makedirs(RESULTS_DIR)
 except:
@@ -29,6 +21,7 @@ def make_image_data_list(image_filenames):
                         'type': 'DOCUMENT_TEXT_DETECTION',
                         'maxResults': 1
                     }]
+                    
             })
     return img_requests
 

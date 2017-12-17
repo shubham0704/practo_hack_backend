@@ -1,15 +1,19 @@
-import cv2
-import matplotlib.pyplot as plt
-import numpy as np
-import imutils
+from controllers.modules import *
 
+
+__PERM__UPLOADS__ = "uploads/permanent/"
+__TEMP__UPLOADS__ = "uploads/temp/"
 
 
 def find_maxVal(gray, template_path):
 	visualize = True
 	found = None
-	template = cv2.imread(template_path)
+	maxVal = 0
+	maxLoc = None
+	print abspath(template_path)
+	template = cv2.imread(abspath(template_path))
 	template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+	#template = cv2.imread(template_path, 0)
 	(tH, tW) = template.shape[:2]
 	template = cv2.Canny(template, 50, 200)
 	
@@ -43,25 +47,36 @@ def find_maxVal(gray, template_path):
 		# the bookkeeping variable
 		if found is None or maxVal > found[0]:
 			found = (maxVal, maxLoc, r)
+	if not maxVal:
+		maxVal = 0.0
+		r = (0,0)
+		tH, tW = (0,0)
+		found = (maxVal, maxLoc, r)
 	return found,(tH, tW)
 
 
 def crop_text(fname):
-	image = cv2.imread(fname)
+	found = None
+	image = cv2.imread(abspath(fname))
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	#gray = cv2.imread(image, 0)
 
-	found_hor = find_maxVal(gray, 'data/template_horizontal.jpg')
-	found_ver = find_maxVal(gray, 'data/template_vertical.jpg')
-
-	verti = True
-	if found_ver[0][0] >= found_hor[0][0]:
-		found = found_ver[0]
-		(tH, tW) = found_ver[1]
-		verti = True
-	else:
-		found = found_hor[0]
-		(tH, tW) = found_hor[1]
-		print 'horizontal'
+	found_hor = find_maxVal(gray, './controllers/data/template_horizontal.jpg')
+	found_ver = find_maxVal(gray, './controllers/data/template_vertical.jpg')
+	print 'found horizontal: ', found_hor, type(found_hor)
+	print 'found vertical:', found_ver, type(found_ver)
+	verti = False
+	try:
+		if found_ver[0][0] >= found_hor[0][0]:
+			found = found_ver[0]
+			(tH, tW) = found_ver[1]
+			verti = True
+		else:
+			found = found_hor[0]
+			(tH, tW) = found_hor[1]
+			print 'horizontal'
+	except Exception as e:
+		print "Exception occured is :",e 
 	# unpack the bookkeeping varaible and compute the (x, y) coordinates
 	# of the bounding box based on the resized ratio
 	(_, maxLoc, r) = found
@@ -77,5 +92,6 @@ def crop_text(fname):
 		#imCrop = image[int(startY):int(startY+endY), int(startX):int(startX+endX)]
 		imCrop = image[int(startX):int(endX), int(startY):int(endY)]
 	f, ext = fname.split('.')
-    new_name = f + '_cropped.' + ext
+	new_name = f + '_cropped.' + ext
 	cv2.imwrite(new_name, imCrop)
+	return new_name
