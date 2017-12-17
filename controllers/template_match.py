@@ -76,6 +76,7 @@ def crop_text(fname):
 			(tH, tW) = found_hor[1]
 			#print 'horizontal'
 	except Exception as e:
+		pass
 		#print "Exception occured is :",e 
 	# unpack the bookkeeping varaible and compute the (x, y) coordinates
 	# of the bounding box based on the resized ratio
