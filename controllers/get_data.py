@@ -167,7 +167,7 @@ def get_name(fname):
 		elif maxVal == y:
 			candidates.append(k)
 	if len(candidates) > 1:
-		k = filter(None, candidates)
+		candidates = filter(None, candidates)
 		k = " ".join((item for item in candidates))
 		return k 
 	return k
