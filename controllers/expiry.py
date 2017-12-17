@@ -39,5 +39,7 @@ class OcrHandler(RequestHandler):
 		name = get_name(fname)
 		if date:
 			self.write({"status" : 200, "message" : "expiry date detected", "expiry":str(date), "name":name})
+		elif name:
+			self.write({"status" : 200, "message" : "expiry date not present", "expiry":"NA", "name": name})
 		else:
-			self.write({"status" : 200, "message" : "expiry date not present", "expiry":"NA"})
+			self.write({"status" : 200, "message" : "expiry date not present", "expiry":"NA", "name": "NA"})
