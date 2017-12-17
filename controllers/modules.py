@@ -20,7 +20,6 @@ import numpy as np
 import imutils
 import time
 import cv2
-import matplotlib.pyplot as plt
 import unicodedata
 from dateutil.relativedelta import *
 from dateutil.easter import *
