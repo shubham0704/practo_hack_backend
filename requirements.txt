@@ -7,4 +7,4 @@ requests==2.18.4
 tornado==4.4.2
 Pillow==4.3.0
 python_dateutil==2.6.1
-Tornado==4.3
+Tornado==4.4

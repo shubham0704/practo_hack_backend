@@ -10,8 +10,8 @@
 # --------------------------
 
 # set up the pip requirements
-touch requirements.txt
-echo "Tornado==4.3" >> requirements.txt
+#touch requirements.txt
+#echo "Tornado==4.3" >> requirements.txt
 
 # set up the Procfile
 touch Procfile
