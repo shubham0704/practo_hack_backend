@@ -10,7 +10,7 @@ def find_maxVal(gray, template_path):
 	found = None
 	maxVal = 0
 	maxLoc = None
-	print abspath(template_path)
+	#print abspath(template_path)
 	template = cv2.imread(abspath(template_path))
 	template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
 	#template = cv2.imread(template_path, 0)
@@ -63,8 +63,8 @@ def crop_text(fname):
 
 	found_hor = find_maxVal(gray, './controllers/data/template_horizontal.jpg')
 	found_ver = find_maxVal(gray, './controllers/data/template_vertical.jpg')
-	print 'found horizontal: ', found_hor, type(found_hor)
-	print 'found vertical:', found_ver, type(found_ver)
+	#print 'found horizontal: ', found_hor, type(found_hor)
+	#print 'found vertical:', found_ver, type(found_ver)
 	verti = False
 	try:
 		if found_ver[0][0] >= found_hor[0][0]:
@@ -74,9 +74,9 @@ def crop_text(fname):
 		else:
 			found = found_hor[0]
 			(tH, tW) = found_hor[1]
-			print 'horizontal'
+			#print 'horizontal'
 	except Exception as e:
-		print "Exception occured is :",e 
+		#print "Exception occured is :",e 
 	# unpack the bookkeeping varaible and compute the (x, y) coordinates
 	# of the bounding box based on the resized ratio
 	(_, maxLoc, r) = found

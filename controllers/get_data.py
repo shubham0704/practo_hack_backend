@@ -36,13 +36,13 @@ def sanitize_data(fname, prepro=False, vertical=False):
 		items = line.split()
 		if len(items) > 1:
 			for item in items:
-				print  items, item
+				#print  items, item
 				try:
 					if re.match('([0-9].+)/([0-9].+)', item) or re.match('([a-zA-Z].+).[0-9].+', item):
 						now = parse(item)
 						dates.append(now)
 				except Exception as e:
-					print e
+					#print e
 					continue
 		else:
 			try:
@@ -54,7 +54,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 	
 	for line in lines:
 		items = line.split()
-		print items
+		#print items
 		for i, item in enumerate(items):
 			if "EX" in item:
 				date = "".join((x for x in items[i+1:]))
@@ -64,7 +64,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 				except:
 					pass
 	try:
-		print vertical
+		#print vertical
 		return max(dates)
 
 	except Exception as e:
@@ -110,7 +110,7 @@ def get_name(fname):
 	return k
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-	#print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
-	print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
+# 	#print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
+# 	print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
