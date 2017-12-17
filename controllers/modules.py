@@ -33,6 +33,7 @@ from os import makedirs
 from os.path import basename, abspath
 from sys import argv
 import env
+import os
 
 ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
 RESULTS_DIR = 'jsons'

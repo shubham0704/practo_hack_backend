@@ -41,7 +41,8 @@ def request_ocr(api_key, image_filenames):
 
 def get_lines(image_filenames=["ocr1.png"]):
     #image_filenames = ["ocr1.png"]
-    api_key = env.api_key
+    #api_key = env.api_key
+    api_key = os.environ["api_key"]
     if not api_key or not image_filenames:
         print("""
             Please supply an api key, then one or more image filenames
