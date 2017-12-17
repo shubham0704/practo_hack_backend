@@ -154,7 +154,7 @@ def get_name(fname):
 				if len(items) < 2:
 					freq[item] +=2
 			elif item in freq:
-				freq[item] += 4
+				freq[item] += 1
 	maxVal = 0
 	k = None
 	candidates = []
