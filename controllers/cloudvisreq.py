@@ -52,7 +52,7 @@ def get_lines(image_filenames=["ocr1.png"]):
     else:
         response = request_ocr(api_key, image_filenames)
         if response.status_code != 200 or response.json().get('error'):
-            print response.text
+            #print (response.text)
             pass
         else:
             for idx, resp in enumerate(response.json()['responses']):
