@@ -177,8 +177,8 @@ def get_name(fname):
 if __name__ == '__main__':
 
  #print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
- print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
- print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+ #print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+ #print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
 
  # print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bdd07912-feba-4036-9312-64953d71dd1b.jpg')
  # print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bdd07912-feba-4036-9312-64953d71dd1b.jpg')
