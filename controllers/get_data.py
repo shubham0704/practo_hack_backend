@@ -1,7 +1,7 @@
-from controllers.modules import *
-#from modules import *
-from controllers import cloudvisreq
-#import cloudvisreq
+#from controllers.modules import *
+from modules import *
+#from controllers import cloudvisreq
+import cloudvisreq
 MON = ["JAN", "FEB", "MAR", "MAY", "JUN", "JUNE", "JULY",  "JUL", "AUG", "SEPT","SEP", "OCT", "NOV", "DEC"]
 
 def preprocess(fname):
@@ -33,7 +33,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 		lines = data.split('\n')
 		#print(lines)
 		#print(data)
-	except:
+	except Exception as e:
 		return
 	dates = []
 	#print lines
@@ -87,7 +87,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 			pass
 	try:
 		#print vertical
-		print ('dates:', dates)
+		#print ('dates:', dates)
 		#dates = [parse(dt) for dt in dates]
 		return max(dates)
 
@@ -112,8 +112,10 @@ def sanitize_data(fname, prepro=False, vertical=False):
 						if its[0] == "SER":
 							its[0] = "SEP"
 							its[1] = "20" + its[1] 
+						if len(its[1]) == 2:
+							its[1] = "20" + its[1]
 						dt = ".".join((it for it in its))
-						print (dt)
+						#print (dt)
 						nd.append(parse(dt))
 					except:
 						pass
@@ -127,7 +129,7 @@ def sanitize_data(fname, prepro=False, vertical=False):
 					filt.append(it)
 				return max(filt)
 			except:
-				print(nd)
+				#print(nd)
 				return None
 		else:
 			return None
@@ -172,7 +174,11 @@ def get_name(fname):
 		return k 
 	return k
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
 
  #print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bc228d1a-8dd0-4447-ba61-95fc05a287e7.jpg')
- #print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+ print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+ print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/IMG_20171217_131015.jpg')
+
+ # print sanitize_data('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bdd07912-feba-4036-9312-64953d71dd1b.jpg')
+ # print get_name('/home/master/Desktop/GIT/practo_hack_backend/uploads/temp/bdd07912-feba-4036-9312-64953d71dd1b.jpg')

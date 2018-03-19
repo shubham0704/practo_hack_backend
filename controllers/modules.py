@@ -32,7 +32,7 @@ from base64 import b64encode
 from os import makedirs
 from os.path import basename, abspath
 from sys import argv
-#import env
+import env
 import os
 
 ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'

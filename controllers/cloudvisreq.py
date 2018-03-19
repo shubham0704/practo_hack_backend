@@ -1,5 +1,5 @@
-from controllers.modules import *
-#from modules import *
+#from controllers.modules import *
+from modules import *
 try:
     makedirs(RESULTS_DIR)
 except:
@@ -42,6 +42,8 @@ def request_ocr(api_key, image_filenames):
 def get_lines(image_filenames=["ocr1.png"]):
     #image_filenames = ["ocr1.png"]
     #api_key = env.api_key
+    
+    #print api_key
     api_key = os.environ["api_key"]
     if not api_key or not image_filenames:
         print("""
@@ -50,7 +52,7 @@ def get_lines(image_filenames=["ocr1.png"]):
     else:
         response = request_ocr(api_key, image_filenames)
         if response.status_code != 200 or response.json().get('error'):
-            #print(response.text)
+            print response.text
             pass
         else:
             for idx, resp in enumerate(response.json()['responses']):
