@@ -1,5 +1,5 @@
-#from controllers.modules import *
-from modules import *
+from controllers.modules import *
+# from modules import *
 try:
     makedirs(RESULTS_DIR)
 except:
@@ -20,7 +20,12 @@ def make_image_data_list(image_filenames):
                     'features': [{
                         'type': 'DOCUMENT_TEXT_DETECTION',
                         'maxResults': 1
-                    }]
+                    }],
+                    'imageContext': {
+                        "languageHints": [
+                            "en"
+                        ]
+                    }
                     
             })
     return img_requests
@@ -28,7 +33,7 @@ def make_image_data_list(image_filenames):
 def make_image_data(image_filenames):
     """Returns the image data lists as bytes"""
     imgdict = make_image_data_list(image_filenames)
-    return json.dumps({"requests": imgdict }).encode()
+    return json.dumps({"requests": imgdict}).encode()
 
 
 def request_ocr(api_key, image_filenames):
@@ -42,9 +47,10 @@ def request_ocr(api_key, image_filenames):
 def get_lines(image_filenames=["ocr1.png"]):
     #image_filenames = ["ocr1.png"]
     #api_key = env.api_key
-    
+
     #print api_key
     api_key = os.environ["api_key"]
+
     if not api_key or not image_filenames:
         print("""
             Please supply an api key, then one or more image filenames
@@ -57,6 +63,7 @@ def get_lines(image_filenames=["ocr1.png"]):
         else:
             for idx, resp in enumerate(response.json()['responses']):
                 # save to JSON file
+                # print(resp)
                 imgname = image_filenames[idx]
                 jpath = join(RESULTS_DIR, basename(imgname) + '.json')
                 with open(jpath, 'w') as f:

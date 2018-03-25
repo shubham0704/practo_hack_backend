@@ -14,7 +14,7 @@ from tornado.web import RequestHandler, Application, removeslash
 import json
 import uuid
 import requests
-from os.path import join, dirname, isfile, splitext
+from os.path import join, dirname, isfile, splitext, abspath
 from imutils import face_utils
 import numpy as np
 import imutils
@@ -34,6 +34,8 @@ from os.path import basename, abspath
 from sys import argv
 #import env
 import os
+from textblob import TextBlob
+from nltk.corpus import stopwords
 
 ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
 RESULTS_DIR = 'jsons'
