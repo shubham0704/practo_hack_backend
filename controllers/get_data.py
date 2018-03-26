@@ -97,7 +97,7 @@ def get_name(fname):
 
     names = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
 
-    names = [x[0] for x in names if x[1] == names[0][1]]
+    names = [x[0] for x in names if x[1] == names[0][1] and names[0][1] > 1]
     return " or ".join(names) or "Not Found"
 
 
